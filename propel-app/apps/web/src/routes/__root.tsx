@@ -7,7 +7,6 @@ import type { QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useState } from "react";
 import { createTanstackQueryUtils } from "@orpc/tanstack-query";
-import type { AppRouterClient } from "@propel/api/routers/index";
 import { createORPCClient } from "@orpc/client";
 import {
 	HeadContent,
@@ -17,6 +16,7 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import "../index.css";
+import type { AppRouterClient } from "@propel/api/routers/index";
 
 export interface RouterAppContext {
 	orpc: typeof orpc;
@@ -28,11 +28,11 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
 	head: () => ({
 		meta: [
 			{
-				title: "propel",
+				title: "bqtr",
 			},
 			{
 				name: "description",
-				content: "propel is a web application",
+				content: "bqtr is a web application",
 			},
 		],
 		links: [
@@ -62,7 +62,6 @@ function RootComponent() {
 				storageKey="vite-ui-theme"
 			>
 				<div className="grid grid-rows-[auto_1fr] h-svh">
-					<Header />
 					{isFetching ? <Loader /> : <Outlet />}
 				</div>
 				<Toaster richColors />

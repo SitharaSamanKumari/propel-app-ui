@@ -1,5 +1,5 @@
 {
-  "name": "propel",
+  "name": "propel-app",
   "private": true,
   "type": "module",
   "workspaces": [
