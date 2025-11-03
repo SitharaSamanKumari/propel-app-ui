@@ -1,16 +1,42 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { AppSidebar } from "@/components/app-sidebar";
+import { SiteHeader } from "@/components/site-header";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 export const Route = createFileRoute("/propel")({
-  component: PropelComponent,
+  component: QTRPage,
 });
 
-function PropelComponent() {
+//add children routes
+
+export default function QTRPage() {
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center p-6">
-      <h1 className="text-2xl font-bold">Welcome to Propel!</h1>
-      <p className="mt-4 text-center">
-        This is the main application page. You can start building your app here.
-      </p>
-    </div>
+    <SidebarProvider
+      style={
+        {
+          "--sidebar-width": "calc(var(--spacing) * 72)",
+          "--header-height": "calc(var(--spacing) * 12)",
+        } as React.CSSProperties
+      }
+    >
+      <AppSidebar variant="inset" />
+      <SidebarInset>
+        <SiteHeader />
+        {/* <div className="flex flex-1 flex-col">
+          <div className="@container/main flex flex-1 flex-col gap-2">
+            <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
+              <SectionCards />
+              <div className="px-4 lg:px-6">
+                {/* <ChartAreaInteractive /> */}
+        {/* </div> */}
+        {/* <DataTable data={data} /> */}
+        {/* </div> */}
+        {/* </div> */}
+        {/* </div> */}
+        <div className="flex-1 p-4">
+          <Outlet />
+        </div>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }
